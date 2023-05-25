@@ -1,0 +1,17 @@
+RewriteEngine on
+RewriteBase /public
+#RewriteCond %{REQUEST_URI} !localhost
+#RewriteCond %{HTTP_HOST} http://localhost$ [NC,OR] 
+#RewriteCond %{SCRIPT_FILENAME} !-f
+#RewriteCond %{SCRIPT_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php/$1 [NC,L]
+#options -Indexes
+
+RewriteCond %{HTTP_HOST} ^localhost$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.localhost$
+RewriteCond %{REQUEST_URI} !public/
+RewriteRule (.*) /public/index.php/$1 [NC,L]
+
+#RewriteCond %{SCRIPT_FILENAME} !-f
+#RewriteCond %{SCRIPT_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php/$1 [NC,L]
